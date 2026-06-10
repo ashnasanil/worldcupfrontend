@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worldcup-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: worldcup-frontend
+  template:
+    metadata:
+      labels:
+        app: worldcup-frontend
+    spec:
+      containers:
+        - name: worldcup-frontend
+          image: <ACR_NAME>.azurecr.io/worldcup-frontend:latest
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: worldcup-frontend
+spec:
+  type: LoadBalancer
+  selector:
+    app: worldcup-frontend
+  ports:
+    - port: 80
+      targetPort: 80
