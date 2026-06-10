@@ -7,7 +7,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class TeamService {
-  private apiUrl = 'http://localhost:5084/api/Team';
+  private apiUrl = '/api/Team';
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
